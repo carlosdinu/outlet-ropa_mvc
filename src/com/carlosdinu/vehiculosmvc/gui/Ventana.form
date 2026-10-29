@@ -19,7 +19,19 @@
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:d:grow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:d:grow"/>
     <rowspec value="top:4dlu:noGrow"/>
@@ -86,11 +98,12 @@
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:max(d;4px):noGrow"/>
     <constraints>
-      <xy x="14" y="24" width="532" height="590"/>
+      <xy x="14" y="24" width="532" height="606"/>
     </constraints>
     <properties>
       <background color="-7961188"/>
       <opaque value="true"/>
+      <preferredSize width="600" height="480"/>
     </properties>
     <border type="line">
       <color color="-14606034"/>
@@ -216,17 +229,6 @@
           <text value="N Plazas"/>
         </properties>
       </component>
-      <component id="f75ae" class="javax.swing.JButton" binding="nuevoButton" default-binding="true">
-        <constraints>
-          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <background color="-9404772"/>
-          <opaque value="true"/>
-          <text value="Nuevo"/>
-        </properties>
-      </component>
       <component id="97e80" class="javax.swing.JTextField" binding="matriculaTxt">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -294,31 +296,9 @@
           <toolTipText value="Introduce la fecha de matriculación del vehículo"/>
         </properties>
       </component>
-      <component id="6a58e" class="javax.swing.JButton" binding="exportarButton">
-        <constraints>
-          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <background color="-9404772"/>
-          <opaque value="true"/>
-          <text value="Exportar"/>
-        </properties>
-      </component>
-      <component id="e0e20" class="javax.swing.JButton" binding="importarButton">
-        <constraints>
-          <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <background color="-9404772"/>
-          <opaque value="true"/>
-          <text value="Importar"/>
-        </properties>
-      </component>
       <component id="e282b" class="javax.swing.JList" binding="list1" default-binding="true">
         <constraints>
-          <grid row="12" column="2" row-span="25" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="12" column="2" row-span="37" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <forms defaultalign-vert="false"/>
@@ -327,6 +307,45 @@
           <font name="Arial"/>
           <model/>
           <opaque value="true"/>
+        </properties>
+      </component>
+      <component id="f75ae" class="javax.swing.JButton" binding="nuevoButton" default-binding="true">
+        <constraints>
+          <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-9404772"/>
+          <font name="Arial Black"/>
+          <foreground color="-1"/>
+          <opaque value="true"/>
+          <text value="Nuevo"/>
+        </properties>
+      </component>
+      <component id="ae049" class="javax.swing.JButton" binding="modificarButton">
+        <constraints>
+          <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-9404772"/>
+          <font name="Arial Black"/>
+          <foreground color="-1"/>
+          <opaque value="true"/>
+          <text value="Modificar"/>
+        </properties>
+      </component>
+      <component id="9b5a7" class="javax.swing.JButton" binding="eliminarButton">
+        <constraints>
+          <grid row="20" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-6545899"/>
+          <font name="Arial Black"/>
+          <foreground color="-1"/>
+          <opaque value="true"/>
+          <text value="Eliminar"/>
         </properties>
       </component>
     </children>

@@ -65,10 +65,10 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
 
     private void addActionListener(ActionListener listener) {
         vista.nuevoButton.addActionListener(listener);
-        vista.importarButton.addActionListener(listener);
-        vista.exportarButton.addActionListener(listener);
         vista.cocheRadioButton.addActionListener(listener);
         vista.motoRadioButton.addActionListener(listener);
+        vista.itemExportar.addActionListener(listener);
+        vista.itemImportar.addActionListener(listener);
     }
 
     private void addListSelectionListener(ListSelectionListener listener) {

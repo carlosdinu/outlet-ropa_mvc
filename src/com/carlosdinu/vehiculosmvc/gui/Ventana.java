@@ -20,19 +20,43 @@ public class Ventana {
     public JButton importarButton;
     public JList list1;
     public DatePicker fechaMatriculacionDPicker;
+    private JButton modificarButton;
+    private JButton eliminarButton;
 
     //creado por mi
     public JFrame frame;
     public DefaultListModel<Vehiculo> dlmVehiculo;
 
+    public JMenuItem itemImportar;
+    public JMenuItem itemExportar;
+
     public Ventana() {
         frame = new JFrame("VehiculosMVC");
         frame.setContentPane(panel1);
-        frame.setSize(1080, 720);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        initComponents();
+        crearMenu();
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         initComponents();
+    }
+
+    public void crearMenu() {
+        JMenuBar barra = new JMenuBar();
+        JMenu menuArchivo = new JMenu("Archivo");
+
+        itemImportar = new JMenuItem("Importar");
+        itemImportar.setActionCommand("Importar");
+
+        itemExportar = new JMenuItem("Exportar");
+        itemExportar.setActionCommand("Exportar");
+
+        menuArchivo.add(itemImportar);
+        menuArchivo.add(itemExportar);
+
+        barra.add(menuArchivo);
+        frame.setJMenuBar(barra);
     }
 
     public void initComponents() {
