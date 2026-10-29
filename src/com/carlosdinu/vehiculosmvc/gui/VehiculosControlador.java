@@ -69,6 +69,7 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
         vista.motoRadioButton.addActionListener(listener);
         vista.itemExportar.addActionListener(listener);
         vista.itemImportar.addActionListener(listener);
+        vista.eliminarButton.addActionListener(listener);
     }
 
     private void addListSelectionListener(ListSelectionListener listener) {
@@ -153,6 +154,21 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
                     } catch (TransformerException ex) {
                         ex.printStackTrace();
                     }
+                }
+                break;
+            case "Eliminar":
+                Vehiculo seleccionado = (Vehiculo) vista.list1.getSelectedValue();
+
+                if (seleccionado == null) {
+                    Util.mensajeError("Selecciona primero un vehiculo de la lista");
+                    break;
+                }
+
+                int resp = Util.mensajeConfirmacion("¿Eliminar " + seleccionado.getMatricula() + " ?", "Eliminar");
+                if (resp == JOptionPane.YES_OPTION) {
+                    modelo.eliminarVehiculo(seleccionado);
+                    limpiarCampos();
+                    refrescar();
                 }
                 break;
             case "Moto":

@@ -20,8 +20,8 @@ public class Ventana {
     public JButton importarButton;
     public JList list1;
     public DatePicker fechaMatriculacionDPicker;
-    private JButton modificarButton;
-    private JButton eliminarButton;
+    public JButton modificarButton;
+    public JButton eliminarButton;
 
     //creado por mi
     public JFrame frame;

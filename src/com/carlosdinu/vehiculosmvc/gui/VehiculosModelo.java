@@ -44,6 +44,10 @@ public class VehiculosModelo {
         listaVehiculos.add(nuevoMoto);
     }
 
+    public void eliminarVehiculo(Vehiculo vehiculo) {
+        listaVehiculos.remove(vehiculo);
+    }
+
     public boolean existeMatricula(String matricula) {
         for (Vehiculo unVehiculo:listaVehiculos) {
             if (unVehiculo.getMatricula().equals(matricula)) {
