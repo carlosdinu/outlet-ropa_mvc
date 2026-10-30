@@ -1,8 +1,8 @@
-package com.carlosdinu.vehiculosmvc.gui;
+package com.carlosdinu.outlet.gui;
 
-import com.carlosdinu.vehiculosmvc.base.Coche;
-import com.carlosdinu.vehiculosmvc.base.Moto;
-import com.carlosdinu.vehiculosmvc.base.Vehiculo;
+import com.carlosdinu.outlet.base.Coche;
+import com.carlosdinu.outlet.base.Moto;
+import com.carlosdinu.outlet.base.Vehiculo;
 import org.xml.sax.SAXException;
 import util.Util;
 

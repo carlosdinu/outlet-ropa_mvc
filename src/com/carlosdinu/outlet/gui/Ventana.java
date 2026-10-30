@@ -1,6 +1,6 @@
-package com.carlosdinu.vehiculosmvc.gui;
+package com.carlosdinu.outlet.gui;
 
-import com.carlosdinu.vehiculosmvc.base.Vehiculo;
+import com.carlosdinu.outlet.base.Vehiculo;
 import com.github.lgooddatepicker.components.DatePicker;
 
 import javax.swing.*;

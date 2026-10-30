@@ -1,8 +1,8 @@
-package com.carlosdinu.vehiculosmvc;
+package com.carlosdinu.outlet;
 
-import com.carlosdinu.vehiculosmvc.gui.VehiculosControlador;
-import com.carlosdinu.vehiculosmvc.gui.VehiculosModelo;
-import com.carlosdinu.vehiculosmvc.gui.Ventana;
+import com.carlosdinu.outlet.gui.VehiculosControlador;
+import com.carlosdinu.outlet.gui.VehiculosModelo;
+import com.carlosdinu.outlet.gui.Ventana;
 
 public class Principal {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.carlosdinu.vehiculosmvc.base;
+package com.carlosdinu.outlet.base;
 
 import java.time.LocalDate;
 
