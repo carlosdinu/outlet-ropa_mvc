@@ -82,7 +82,7 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
 
     private void cargarDatosConfiguracion() throws IOException {
         Properties configuracion = new Properties();
-        configuracion.load(new FileReader("vehiculos.conf"));
+        configuracion.load(new FileReader("outlet.conf"));
         ultimaRutaExportada=new File(configuracion.getProperty("ultimaRutaExportada"));
     }
 
@@ -93,7 +93,7 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
     private void guardarDatosConfiguracion() throws IOException {
         Properties configuracion = new Properties();
         configuracion.setProperty("ultimaRutaExportada",ultimaRutaExportada.getAbsolutePath());
-        configuracion.store(new PrintWriter("vehiculos.conf"),"Datos configuracion vehiculos");
+        configuracion.store(new PrintWriter("outlet.conf"),"Datos configuracion vehiculos");
     }
 
     @Override
