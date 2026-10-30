@@ -1,8 +1,8 @@
 package com.carlosdinu.outlet.gui;
 
-import com.carlosdinu.outlet.base.Coche;
-import com.carlosdinu.outlet.base.Moto;
-import com.carlosdinu.outlet.base.Vehiculo;
+import com.carlosdinu.outlet.base.Camiseta;
+import com.carlosdinu.outlet.base.Zapatilla;
+import com.carlosdinu.outlet.base.Prenda;
 import org.xml.sax.SAXException;
 import util.Util;
 
@@ -58,7 +58,7 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
 
     public void refrescar() {
         vista.dlmVehiculo.clear();
-        for (Vehiculo unVehiculo:modelo.obtenerVehiculos()) {
+        for (Prenda unVehiculo:modelo.obtenerVehiculos()) {
             vista.dlmVehiculo.addElement(unVehiculo);
         }
     }
@@ -157,14 +157,14 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
                 }
                 break;
             case "Eliminar":
-                Vehiculo seleccionado = (Vehiculo) vista.list1.getSelectedValue();
+                Prenda seleccionado = (Prenda) vista.list1.getSelectedValue();
 
                 if (seleccionado == null) {
                     Util.mensajeError("Selecciona primero un vehiculo de la lista");
                     break;
                 }
 
-                int resp = Util.mensajeConfirmacion("¿Eliminar " + seleccionado.getMatricula() + " ?", "Eliminar");
+                int resp = Util.mensajeConfirmacion("¿Eliminar " + seleccionado.getCodigo() + " ?", "Eliminar");
                 if (resp == JOptionPane.YES_OPTION) {
                     modelo.eliminarVehiculo(seleccionado);
                     limpiarCampos();
@@ -201,17 +201,17 @@ public class VehiculosControlador implements ActionListener, ListSelectionListen
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) {
-            Vehiculo vehiculoSeleccionado = (Vehiculo) vista.list1.getSelectedValue();
-            vista.matriculaTxt.setText(vehiculoSeleccionado.getMatricula());
+            Prenda vehiculoSeleccionado = (Prenda) vista.list1.getSelectedValue();
+            vista.matriculaTxt.setText(vehiculoSeleccionado.getCodigo());
             vista.marcaTxt.setText(vehiculoSeleccionado.getMarca());
-            vista.modeloTxt.setText(vehiculoSeleccionado.getModelo());
-            vista.fechaMatriculacionDPicker.setDate(vehiculoSeleccionado.getFechaMatriculacion());
-            if (vehiculoSeleccionado instanceof Coche) {
+            vista.modeloTxt.setText(vehiculoSeleccionado.getNombre());
+            vista.fechaMatriculacionDPicker.setDate(vehiculoSeleccionado.getFechaEntrada());
+            if (vehiculoSeleccionado instanceof Camiseta) {
                 vista.cocheRadioButton.doClick();
-                vista.plazasKmsTxt.setText(String.valueOf(((Coche) vehiculoSeleccionado).getNumPlazas()));
+                vista.plazasKmsTxt.setText(String.valueOf(((Camiseta) vehiculoSeleccionado).getTalla()));
             } else {
                 vista.motoRadioButton.doClick();
-                vista.plazasKmsTxt.setText(String.valueOf(((Moto) vehiculoSeleccionado).getKms()));
+                vista.plazasKmsTxt.setText(String.valueOf(((Zapatilla) vehiculoSeleccionado).getNumero()));
             }
         }
     }

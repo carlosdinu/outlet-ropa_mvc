@@ -1,6 +1,6 @@
 package com.carlosdinu.outlet.gui;
 
-import com.carlosdinu.outlet.base.Vehiculo;
+import com.carlosdinu.outlet.base.Prenda;
 import com.github.lgooddatepicker.components.DatePicker;
 
 import javax.swing.*;
@@ -25,7 +25,7 @@ public class Ventana {
 
     //creado por mi
     public JFrame frame;
-    public DefaultListModel<Vehiculo> dlmVehiculo;
+    public DefaultListModel<Prenda> dlmVehiculo;
 
     public JMenuItem itemImportar;
     public JMenuItem itemExportar;
@@ -60,7 +60,7 @@ public class Ventana {
     }
 
     public void initComponents() {
-        dlmVehiculo= new DefaultListModel<Vehiculo>();
+        dlmVehiculo= new DefaultListModel<Prenda>();
         list1.setModel(dlmVehiculo);
     }
 

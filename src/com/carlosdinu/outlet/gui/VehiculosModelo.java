@@ -1,8 +1,8 @@
 package com.carlosdinu.outlet.gui;
 
-import com.carlosdinu.outlet.base.Coche;
-import com.carlosdinu.outlet.base.Moto;
-import com.carlosdinu.outlet.base.Vehiculo;
+import com.carlosdinu.outlet.base.Camiseta;
+import com.carlosdinu.outlet.base.Zapatilla;
+import com.carlosdinu.outlet.base.Prenda;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -20,37 +20,37 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class VehiculosModelo {
-    private ArrayList<Vehiculo> listaVehiculos;
+    private ArrayList<Prenda> listaVehiculos;
 
     public VehiculosModelo() {
         listaVehiculos= new ArrayList<>();
     }
 
-    public ArrayList<Vehiculo> obtenerVehiculos() {
+    public ArrayList<Prenda> obtenerVehiculos() {
         return listaVehiculos;
     }
 
     public void altaCoche(String matricula, String marca,
                           String modelo, LocalDate fechaMatriculacion,
                           int numPlazas) {
-        Coche nuevoCoche = new Coche(matricula,marca,modelo,fechaMatriculacion,numPlazas);
-        listaVehiculos.add(nuevoCoche);
+        Camiseta nuevoCamiseta = new Camiseta(matricula,marca,modelo,fechaMatriculacion,numPlazas);
+        listaVehiculos.add(nuevoCamiseta);
     }
 
     public void altaMoto(String matricula, String marca,
                          String modelo, LocalDate fechaMatriculacion,
                          double kms) {
-        Moto nuevoMoto = new Moto(matricula,marca,modelo,fechaMatriculacion,kms);
-        listaVehiculos.add(nuevoMoto);
+        Zapatilla nuevoZapatilla = new Zapatilla(matricula,marca,modelo,fechaMatriculacion,kms);
+        listaVehiculos.add(nuevoZapatilla);
     }
 
-    public void eliminarVehiculo(Vehiculo vehiculo) {
+    public void eliminarVehiculo(Prenda vehiculo) {
         listaVehiculos.remove(vehiculo);
     }
 
     public boolean existeMatricula(String matricula) {
-        for (Vehiculo unVehiculo:listaVehiculos) {
-            if (unVehiculo.getMatricula().equals(matricula)) {
+        for (Prenda unVehiculo:listaVehiculos) {
+            if (unVehiculo.getCodigo().equals(matricula)) {
                 return true;
             }
         }
@@ -71,9 +71,9 @@ public class VehiculosModelo {
         Element nodoDatos=null;
         Text texto=null;
 
-        for (Vehiculo unVehiculo:listaVehiculos) {
+        for (Prenda unVehiculo:listaVehiculos) {
             //añadimos dentro de vehiculos, coches o motos
-            if (unVehiculo instanceof Coche) {
+            if (unVehiculo instanceof Camiseta) {
                 nodoVehiculo=documento.createElement("Coche");
             } else {
                 nodoVehiculo=documento.createElement("Moto");
@@ -83,7 +83,7 @@ public class VehiculosModelo {
             //dentro de la etiqueta veniculo -> marca, modelo ....
             nodoDatos=documento.createElement("matricula");
             nodoVehiculo.appendChild(nodoDatos);
-            texto=documento.createTextNode(unVehiculo.getMatricula());
+            texto=documento.createTextNode(unVehiculo.getCodigo());
             nodoDatos.appendChild(texto);
 
             nodoDatos=documento.createElement("marca");
@@ -93,24 +93,24 @@ public class VehiculosModelo {
 
             nodoDatos=documento.createElement("modelo");
             nodoVehiculo.appendChild(nodoDatos);
-            texto=documento.createTextNode(unVehiculo.getModelo());
+            texto=documento.createTextNode(unVehiculo.getNombre());
             nodoDatos.appendChild(texto);
 
             nodoDatos=documento.createElement("fechamatriculacion");
             nodoVehiculo.appendChild(nodoDatos);
-            texto=documento.createTextNode(unVehiculo.getFechaMatriculacion().toString());
+            texto=documento.createTextNode(unVehiculo.getFechaEntrada().toString());
             nodoDatos.appendChild(texto);
 
             //ponemos el campo diferente
-            if (unVehiculo instanceof Coche) {
+            if (unVehiculo instanceof Camiseta) {
                 nodoDatos=documento.createElement("numeroplazas");
                 nodoVehiculo.appendChild(nodoDatos);
-                texto=documento.createTextNode(String.valueOf(((Coche) unVehiculo).getNumPlazas()));
+                texto=documento.createTextNode(String.valueOf(((Camiseta) unVehiculo).getTalla()));
                 nodoDatos.appendChild(texto);
             } else {
                 nodoDatos=documento.createElement("kms");
                 nodoVehiculo.appendChild(nodoDatos);
-                texto=documento.createTextNode(String.valueOf(((Moto)unVehiculo).getKms()));
+                texto=documento.createTextNode(String.valueOf(((Zapatilla)unVehiculo).getNumero()));
                 nodoDatos.appendChild(texto);
             }
         }
@@ -123,9 +123,9 @@ public class VehiculosModelo {
     }
 
     public void importarXML (File fichero) throws ParserConfigurationException, IOException, SAXException {
-        listaVehiculos= new ArrayList<Vehiculo>();
-        Coche  nuevoCoche = null;
-        Moto nuevaMoto=null;
+        listaVehiculos= new ArrayList<Prenda>();
+        Camiseta nuevoCamiseta = null;
+        Zapatilla nuevaZapatilla =null;
 
         DocumentBuilderFactory factory =DocumentBuilderFactory.newInstance();
         DocumentBuilder builder= factory.newDocumentBuilder();
@@ -137,22 +137,22 @@ public class VehiculosModelo {
             Element nodoVehiculo= (Element) listaElementos.item(i);
 
             if (nodoVehiculo.getTagName().equals("Coche")) {
-                nuevoCoche = new Coche();
-                nuevoCoche.setMatricula(nodoVehiculo.getChildNodes().item(0).getTextContent());
-                nuevoCoche.setMarca(nodoVehiculo.getChildNodes().item(1).getTextContent());
-                nuevoCoche.setModelo(nodoVehiculo.getChildNodes().item(2).getTextContent());
-                nuevoCoche.setFechaMatriculacion(LocalDate.parse(nodoVehiculo.getChildNodes().item(3).getTextContent()));
-                nuevoCoche.setNumPlazas(Integer.parseInt(nodoVehiculo.getChildNodes().item(4).getTextContent()));
-                listaVehiculos.add(nuevoCoche);
+                nuevoCamiseta = new Camiseta();
+                nuevoCamiseta.setCodigo(nodoVehiculo.getChildNodes().item(0).getTextContent());
+                nuevoCamiseta.setMarca(nodoVehiculo.getChildNodes().item(1).getTextContent());
+                nuevoCamiseta.setNombre(nodoVehiculo.getChildNodes().item(2).getTextContent());
+                nuevoCamiseta.setFechaEntrada(LocalDate.parse(nodoVehiculo.getChildNodes().item(3).getTextContent()));
+                nuevoCamiseta.setTalla(Integer.parseInt(nodoVehiculo.getChildNodes().item(4).getTextContent()));
+                listaVehiculos.add(nuevoCamiseta);
             } else{
                 if (nodoVehiculo.getTagName().equals("Moto")) {
-                    nuevaMoto = new Moto();
-                    nuevaMoto.setMatricula(nodoVehiculo.getChildNodes().item(0).getTextContent());
-                    nuevaMoto.setMarca(nodoVehiculo.getChildNodes().item(1).getTextContent());
-                    nuevaMoto.setModelo(nodoVehiculo.getChildNodes().item(2).getTextContent());
-                    nuevaMoto.setFechaMatriculacion(LocalDate.parse(nodoVehiculo.getChildNodes().item(3).getTextContent()));
-                    nuevaMoto.setKms(Double.parseDouble(nodoVehiculo.getChildNodes().item(4).getTextContent()));
-                    listaVehiculos.add(nuevaMoto);
+                    nuevaZapatilla = new Zapatilla();
+                    nuevaZapatilla.setCodigo(nodoVehiculo.getChildNodes().item(0).getTextContent());
+                    nuevaZapatilla.setMarca(nodoVehiculo.getChildNodes().item(1).getTextContent());
+                    nuevaZapatilla.setNombre(nodoVehiculo.getChildNodes().item(2).getTextContent());
+                    nuevaZapatilla.setFechaEntrada(LocalDate.parse(nodoVehiculo.getChildNodes().item(3).getTextContent()));
+                    nuevaZapatilla.setNumero(Double.parseDouble(nodoVehiculo.getChildNodes().item(4).getTextContent()));
+                    listaVehiculos.add(nuevaZapatilla);
                 }
             }
 
