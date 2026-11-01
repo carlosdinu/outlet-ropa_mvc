@@ -26,6 +26,7 @@ public class Camiseta extends Prenda {
 
     @Override
     public String toString() {
-        return "Coche:" + getCodigo()+" "+getMarca()+" "+ getNombre() ;
+        return String.format(" CAMISETA  |  %s  |  %s %s  |  Talla %s  |  %.2f € (-%d%%)",
+                getCodigo(), getMarca(), getNombre(), talla, getPrecio(), getDescuento());
     }
 }

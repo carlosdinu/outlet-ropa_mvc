@@ -26,6 +26,7 @@ public class Pantalon extends Prenda {
 
     @Override
     public String toString() {
-        return "Pantalon: " + getCodigo() + " " + getMarca() + " " + getNombre();
+        return String.format(" PANTALÓN  |  %s  |  %s %s  |  Cintura %d  |  %.2f € (-%d%%)",
+                getCodigo(), getMarca(), getNombre(), tallaCintura, getPrecio(), getDescuento());
     }
 }

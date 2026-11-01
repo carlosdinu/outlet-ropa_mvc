@@ -105,7 +105,6 @@ public class OutletModelo {
             }
         }
 
-        // guardar en fichero
         Source source = new DOMSource(documento);
         Result resultado = new StreamResult(fichero);
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -163,5 +162,19 @@ public class OutletModelo {
 
     private String leer(Element nodo, String etiqueta) {
         return nodo.getElementsByTagName(etiqueta).item(0).getTextContent();
+    }
+
+    public ArrayList<Prenda> buscarPrendas(String texto) {
+        ArrayList<Prenda> resultado = new ArrayList<>();
+        String busqueda = texto.toLowerCase();
+        for (Prenda unaPrenda : listaPrendas) {
+            if (unaPrenda.getCodigo().toLowerCase().contains(busqueda) ||
+                    unaPrenda.getMarca().toLowerCase().contains(busqueda) ||
+                    unaPrenda.getNombre().toLowerCase().contains(busqueda) ||
+                    unaPrenda.getClass().getSimpleName().toLowerCase().contains(busqueda)) {
+                resultado.add(unaPrenda);
+            }
+        }
+        return resultado;
     }
 }

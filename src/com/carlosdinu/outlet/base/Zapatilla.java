@@ -26,6 +26,7 @@ public class Zapatilla extends Prenda {
 
     @Override
     public String toString() {
-        return "Zapatilla:" + getCodigo()+" "+getMarca()+" "+ getNombre() ;
+        return String.format(" ZAPATILLA  |  %s  |  %s %s  |  Nº %.1f  |  %.2f € (-%d%%)",
+                getCodigo(), getMarca(), getNombre(), numero, getPrecio(), getDescuento());
     }
 }

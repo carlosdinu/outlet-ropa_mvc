@@ -12,14 +12,14 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Properties;
 
-public class OutletControlador implements ActionListener, ListSelectionListener, WindowListener {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class OutletControlador implements ActionListener, ListSelectionListener, WindowListener, KeyListener {
     private Ventana vista;
     private OutletModelo modelo;
     private File ultimaRutaExportada;
@@ -33,6 +33,7 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
             System.out.println("No se encontro el archivo " + e.getMessage());
         }
         addActionListener(this);
+        vista.buscarTxt.addKeyListener(this);
         addListSelectionListener(this);
         addWindowListener(this);
     }
@@ -62,7 +63,7 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
 
     public void refrescar() {
         vista.dlmPrenda.clear();
-        for (Prenda unaPrenda : modelo.obtenerPrendas()) {
+        for (Prenda unaPrenda : modelo.buscarPrendas(vista.buscarTxt.getText())) {
             vista.dlmPrenda.addElement(unaPrenda);
         }
     }
@@ -310,4 +311,15 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
 
     @Override
     public void windowClosed(WindowEvent e) { }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        refrescar();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) { }
+
+    @Override
+    public void keyPressed(KeyEvent e) { }
 }
