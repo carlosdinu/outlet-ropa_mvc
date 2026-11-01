@@ -3,29 +3,29 @@ package com.carlosdinu.outlet.base;
 import java.time.LocalDate;
 
 public class Pantalon extends Prenda {
-    private String talla;
+    private int tallaCintura;
 
     public Pantalon() {
         super();
     }
 
-    public Pantalon (String codigo, String marca, String nombre, LocalDate fechaEntrada,
+    public Pantalon(String codigo, String marca, String nombre, LocalDate fechaEntrada,
                     double precio, int descuento, String color, String descripcion,
-                    String talla) {
+                    int tallaCintura) {
         super(codigo, marca, nombre, fechaEntrada, precio, descuento, color, descripcion);
-        this.talla = talla;
+        this.tallaCintura = tallaCintura;
     }
 
-    public String getTalla() {
-        return talla;
+    public int getTallaCintura() {
+        return tallaCintura;
     }
 
-    public void setTalla(String talla) {
-        this.talla = talla;
+    public void setTallaCintura(int tallaCintura) {
+        this.tallaCintura = tallaCintura;
     }
 
     @Override
     public String toString() {
-        return "Coche:" + getCodigo()+" "+getMarca()+" "+ getNombre() ;
+        return "Pantalon: " + getCodigo() + " " + getMarca() + " " + getNombre();
     }
 }

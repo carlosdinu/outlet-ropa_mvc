@@ -11,7 +11,7 @@ public class Zapatilla extends Prenda {
 
     public Zapatilla(String codigo, String marca, String nombre, LocalDate fechaEntrada,
                     double precio, int descuento, String color, String descripcion,
-                    String talla) {
+                    double numero) {
         super(codigo, marca, nombre, fechaEntrada, precio, descuento, color, descripcion);
         this.numero = numero;
     }
@@ -26,6 +26,6 @@ public class Zapatilla extends Prenda {
 
     @Override
     public String toString() {
-        return "Moto:" + getCodigo()+" "+getMarca()+" "+ getNombre() ;
+        return "Zapatilla:" + getCodigo()+" "+getMarca()+" "+ getNombre() ;
     }
 }
