@@ -24,6 +24,10 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
     private OutletModelo modelo;
     private File ultimaRutaExportada;
 
+    /*
+        OutletControlador, este metodo se encarga de cargar los datos, una vez cargados, se agrega el actionListener,
+        se agrega un KeyListener a buscarTxt un SelectionListener a la lista y un windowListener.
+     */
     public OutletControlador(Ventana vista, OutletModelo modelo) {
         this.vista = vista;
         this.modelo = modelo;
@@ -38,6 +42,9 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         addWindowListener(this);
     }
 
+    /*
+        hayCamposVacios, este metodo se encarga de verificar si existe algun campo vacio
+     */
     private boolean hayCamposVacios() {
         return vista.codigoTxt.getText().isEmpty() ||
                 vista.marcaTxt.getText().isEmpty() ||
@@ -48,6 +55,9 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
                 vista.fechaEntradaDPicker.getText().isEmpty();
     }
 
+    /*
+        limpiarCampos, este metodo se encarga de eliminar el contenido de un campo
+     */
     private void limpiarCampos() {
         vista.codigoTxt.setText(null);
         vista.marcaTxt.setText(null);
@@ -61,6 +71,9 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         vista.codigoTxt.requestFocus();
     }
 
+    /*
+        refrescar, se encarga de actualizar los datos
+     */
     public void refrescar() {
         vista.dlmPrenda.clear();
         for (Prenda unaPrenda : modelo.buscarPrendas(vista.buscarTxt.getText())) {
@@ -68,6 +81,9 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         }
     }
 
+    /*
+        addActionListener, agrega los listener a los buttons, ya sean normales o radioButtons
+     */
     private void addActionListener(ActionListener listener) {
         vista.nuevoButton.addActionListener(listener);
         vista.modificarButton.addActionListener(listener);
@@ -80,14 +96,23 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         vista.itemSalir.addActionListener(listener);
     }
 
+    /*
+        addListSelectionListener, agrega un listener a la lista
+     */
     private void addListSelectionListener(ListSelectionListener listener) {
         vista.list1.addListSelectionListener(listener);
     }
 
+    /*
+        addWindowListener, agrega un listener a la ventana de la app
+     */
     private void addWindowListener(WindowListener listener) {
         vista.frame.addWindowListener(listener);
     }
 
+    /*
+        cargarDatosConfiguracion, se encarga de cargar la ultima ruta exportada
+     */
     private void cargarDatosConfiguracion() throws IOException {
         Properties configuracion = new Properties();
         try (FileReader lector = new FileReader("outlet.conf")) {
@@ -96,10 +121,16 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         ultimaRutaExportada = new File(configuracion.getProperty("ultimaRutaExportada"));
     }
 
+    /*
+        actualizarDatosConfiguracion, se encarga de actualizar la ultima ruta exportada en outlet.conf
+     */
     private void actualizarDatosConfiguracion(File ultimaRutaExportada) {
         this.ultimaRutaExportada = ultimaRutaExportada;
     }
 
+    /*
+        guardarDatosConfiguracion, se encarga de guardar la ultimaRutaExportada, unicamente si NO es NULL
+     */
     private void guardarDatosConfiguracion() throws IOException {
         if (ultimaRutaExportada == null) {
             return;
@@ -111,6 +142,11 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         }
     }
 
+    /*
+        darDeAlta, metodo encargado de dar de alta un tipo de Prenda, se encarga de recoger los text de los campos
+        y dependiendo del tipo de prenda, utiliza el get especifico de la prenda para finalizar el proceso de dado de alta,
+        si no se rellena un campo, devuelve error y false para que el programa no añada nada incompleto.
+     */
     private boolean darDeAlta() {
         try {
             String codigo = vista.codigoTxt.getText();
@@ -142,11 +178,19 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         }
     }
 
+    /*
+        actionPerformed, se encarga de dar comandos a la App, segun el boton pulsado, se dispone de 9 botones;
+        Nuevo, Modificar, Eliminar, Importar, Exportar, Salir, Camiseta, Pantalon y Zapatilla
+
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
 
         switch (actionCommand) {
+            // Nuevo se encarga de verificar si hay campos vacios, si los hay devuelve error, si no continua verificando
+            // si existe el codigo, del mismo modo, si existe no deja continuar y devuelve error, por ultimo, si no se cumplen estos errores
+            // se da de alta la prenda, se limpia los campos de texto y se refresca la lista.
             case "Nuevo":
                 if (hayCamposVacios()) {
                     Util.mensajeError("Rellena todos los campos (la descripcion es opcional)");
@@ -161,7 +205,9 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
                     refrescar();
                 }
                 break;
-
+            // Modificar se encarga de permitir al usuario poder cambiar un valor o varios, para ello primero debe estar seleccionada la prenda
+            // si no devolvera error, seguidamente que los campos esten todos rellenados, y por ultimo que el codigo sea el mismo, una vez modificada,
+            // se elimina la prenda anterior y se da de alta la nueva modificada, por ultimo se refresca.
             case "Modificar":
                 Prenda aModificar = vista.list1.getSelectedValue();
                 if (aModificar == null) {
@@ -185,7 +231,8 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
                 }
                 refrescar();
                 break;
-
+            // Eliminar se encarga de borrar el dato seleccionado, para ello ese dato debe existir y estar seleccionado,
+            // una vez seleccionado, el usuario recibira una nueva ventana de seguridad, esperando su confirmacion.
             case "Eliminar":
                 Prenda seleccionada = vista.list1.getSelectedValue();
                 if (seleccionada == null) {

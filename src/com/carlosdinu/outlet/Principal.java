@@ -1,3 +1,7 @@
+/*
+        Clase Principal, es la que ejecuta el Programa
+ */
+
 package com.carlosdinu.outlet;
 
 import com.carlosdinu.outlet.gui.OutletControlador;

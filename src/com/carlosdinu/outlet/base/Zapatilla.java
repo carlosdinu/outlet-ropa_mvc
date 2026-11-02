@@ -1,3 +1,7 @@
+/*
+        Clase heredada de Prenda, tiene dos constructores, getters y setters y un toString
+ */
+
 package com.carlosdinu.outlet.base;
 
 import java.time.LocalDate;
