@@ -246,7 +246,7 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
                     refrescar();
                 }
                 break;
-
+            // Importar se encarga de extraer los datos de un archivo .xml para usarlos en el programa
             case "Importar":
                 JFileChooser selectorFichero = Util.crearSelectorFichero(ultimaRutaExportada,
                         "Archivos XML", "xml");
@@ -261,7 +261,7 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
                     refrescar();
                 }
                 break;
-
+            // Exportar se encarga de guardar los datos en un fichero .xml
             case "Exportar":
                 JFileChooser selectorFichero2 = Util.crearSelectorFichero(ultimaRutaExportada,
                         "Archivos XML", "xml");
@@ -281,19 +281,21 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
                     }
                 }
                 break;
-
+            // Salir se usa como un boton para decorar el JMenuBar, teniendo la misma funcion que la X de la ventana, cerrarla
             case "Salir":
                 windowClosing(null);
                 break;
-
+            // Camiseta es el boton encargado de decirle al programa el tipo de Prenda que estamos guardando.
             case "Camiseta":
                 vista.campoVariableLbl.setText("Talla");
                 vista.campoVariableTxt.setToolTipText("Introduce la talla (S, M, L, XL...)");
                 break;
+            // Pantalon es el boton encargado de decirle al programa el tipo de Prenda que estamos guardando.
             case "Pantalon":
                 vista.campoVariableLbl.setText("Talla cintura");
                 vista.campoVariableTxt.setToolTipText("Introduce la talla de cintura (38, 40...)");
                 break;
+            // Zapatilla es el boton encargado de decirle al programa el tipo de Prenda que estamos guardando.
             case "Zapatilla":
                 vista.campoVariableLbl.setText("Nº calzado");
                 vista.campoVariableTxt.setToolTipText("Introduce el numero (42, 42.5...)");
