@@ -303,6 +303,10 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         }
     }
 
+    /*
+           windowClosing, se ejecuta al pulsar la X de la ventana o Salir del menu, pregunta al usuario si quiere salir,
+           si confirma guarda la ultima ruta exportada en outlet.conf y cierra el programa.
+    */
     @Override
     public void windowClosing(WindowEvent e) {
         int resp = Util.mensajeConfirmacion("¿Deseas cerrar la ventana?", "Salir");
@@ -316,6 +320,12 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
         }
     }
 
+    /*
+        valueChanged, se ejecuta al seleccionar una prenda de la lista, rellena todos los campos con sus datos,
+        con instanceof comprueba el tipo de prenda, marca su radioButton y rellena el campo propio de esa prenda.
+        Si la seleccion se esta moviendo todavia o no hay nada seleccionado, no hace nada.
+
+     */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         Prenda prendaSeleccionada = vista.list1.getSelectedValue();
@@ -361,6 +371,10 @@ public class OutletControlador implements ActionListener, ListSelectionListener,
     @Override
     public void windowClosed(WindowEvent e) { }
 
+    /*
+        keyReleased, se ejecuta al soltar una tecla en buscarTxt, refresca la lista mostrando solo las prendas
+        que coinciden con lo escrito. Uso keyReleased porque al soltar la tecla la letra ya esta escrita en el campo.
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         refrescar();

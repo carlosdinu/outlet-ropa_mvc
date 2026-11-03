@@ -34,12 +34,14 @@ public class Ventana {
     public JButton modificarButton;
     public JButton eliminarButton;
 
+    //creado por mi
     public JFrame frame;
     public DefaultListModel<Prenda> dlmPrenda;
     public JMenuItem itemImportar;
     public JMenuItem itemExportar;
     public JMenuItem itemSalir;
 
+    //colores y fuentes del diseño
     private static final Color FONDO = new Color(245, 240, 235);
     private static final Color PRIMARIO = new Color(40, 40, 40);
     private static final Color ACENTO = new Color(200, 70, 60);
@@ -47,6 +49,10 @@ public class Ventana {
     private static final Font FUENTE = new Font("Segoe UI", Font.PLAIN, 14);
     private static final Font FUENTE_BOLD = new Font("Segoe UI", Font.BOLD, 14);
 
+    /*
+        Ventana, este metodo se encarga de crear el frame con el panel del .form, cargar la lista,
+        aplicar los colores, crear el menu y por ultimo ajustar el tamaño, centrar y mostrar la ventana
+     */
     public Ventana() {
         frame = new JFrame("Outlet de Ropa");
         frame.setContentPane(panel1);
@@ -63,11 +69,18 @@ public class Ventana {
         frame.setVisible(true);
     }
 
+    /*
+        initComponents, se encarga de crear el DefaultListModel y asignarlo a la lista
+     */
     private void initComponents() {
         dlmPrenda = new DefaultListModel<>();
         list1.setModel(dlmPrenda);
     }
 
+    /*
+        crearMenu, crea el JMenuBar con el menu Archivo (Importar, Exportar y Salir),
+        se hace por codigo porque el diseñador del .form no tiene JMenuBar
+     */
     private void crearMenu() {
         JMenuBar barra = new JMenuBar();
         JMenu menuArchivo = new JMenu("Archivo");
@@ -82,6 +95,10 @@ public class Ventana {
         frame.setJMenuBar(barra);
     }
 
+    /*
+        aplicarEstilo, recorre todos los componentes y les pone color y fuente segun su tipo,
+        es recursivo, si el componente es un panel se llama a si mismo para dar estilo a lo que tiene dentro
+     */
     private void aplicarEstilo(Container contenedor) {
         for (Component c : contenedor.getComponents()) {
             c.setFont(FUENTE);
@@ -106,6 +123,7 @@ public class Ventana {
                         BorderFactory.createEmptyBorder(3, 5, 3, 5)));
             }
 
+            //si tiene componentes dentro tambien los recorro
             if (c instanceof Container) {
                 aplicarEstilo((Container) c);
             }
