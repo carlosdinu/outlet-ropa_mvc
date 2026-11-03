@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.carlosdinu.outlet"},{"l":"com.carlosdinu.outlet.base"},{"l":"com.carlosdinu.outlet.gui"},{"l":"util"}];updateSearchResults();
