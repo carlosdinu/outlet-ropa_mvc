@@ -25,8 +25,8 @@ El proyecto sigue el patrón **Modelo–Vista–Controlador (MVC)**:
 Punto de entrada: `com.carlosdinu.outlet.Principal`
 
 ## 📸 Capturas
-![Aplicación con prendas cargadas](docs/Captura_de_pantalla_2026-11-23_193055.png)
-![Formulario vacío](docs/Captura_de_pantalla_2026-11-23_193036.png)
+![Aplicación con prendas cargadas](docs/Captura%20de%20pantalla%202026-11-23%20193055.png)
+![Formulario vacío](docs/Captura%20de%20pantalla%202026-11-23%20193036.png)
 
 ## 🛠️ Tecnologías
 - Java · Java Swing
