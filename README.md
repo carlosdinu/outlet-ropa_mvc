@@ -3,8 +3,10 @@
 Aplicación de escritorio en **Java** para gestionar el inventario de un outlet de ropa. Desarrollada como práctica del módulo **Acceso a Datos** de 2º de **DAM** (Desarrollo de Aplicaciones Multiplataforma).
 
 ## ✨ Funcionalidades
-- Alta de prendas de tres tipos: **camisetas, pantalones y zapatillas**
-- Listado, **búsqueda** y **eliminación** de prendas
+- Gestión de tres tipos de prenda: **camisetas, pantalones y zapatillas**
+- **Alta, modificación y eliminación** de prendas
+- Datos por prenda: código, marca, nombre, precio, descuento, color, fecha de entrada, talla y descripción
+- Listado con **búsqueda**
 - Validación de **código único** por prenda
 - Selección de fecha de entrada con calendario (LGoodDatePicker)
 - **Exportación e importación de datos en XML** (DOM)
@@ -21,6 +23,10 @@ El proyecto sigue el patrón **Modelo–Vista–Controlador (MVC)**:
 | Controlador | `OutletControlador` — conecta los eventos de la vista con el modelo |
 
 Punto de entrada: `com.carlosdinu.outlet.Principal`
+
+## 📸 Capturas
+![Aplicación con prendas cargadas](docs/Captura_de_pantalla_2026-11-23_193055.png)
+![Formulario vacío](docs/Captura_de_pantalla_2026-11-23_193036.png)
 
 ## 🛠️ Tecnologías
 - Java · Java Swing
